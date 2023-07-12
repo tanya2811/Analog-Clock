@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<style>
+    body {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background-color: #07252d;
+    }
+    .set{
+        display: flex;
+        margin-left: 37vw;
+    }
+    h1{
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        color: rgb(187, 175, 175);
+        margin-right: 4vw;
+    }
+
+    #date, #day{
+        /* text-align: center; */
+        font-family: Arial, sans-serif;
+        font-size: 30px;
+        color: white;
+        margin-top: 20vh;
+        margin-right: 4vw;
+    }
+
+    .clock {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 48px;
+        color: white;
+        border: 5px solid #044d63;
+        box-shadow: 0px 0px 10px #03bcf4;
+        -webkit-box-reflect: 0.5px linear-gradient(transparent, #0008);
+        border-radius: 20px;
+        margin-top: 5vh;
+        margin-left: 28vw;
+        width: 30vw;
+        display: flex;
+        justify-content: space-around;
+        padding: 60px;
+        animation: animate 5s linear infinite;
+    }
+
+
+    #hour,
+    #minuts,
+    #seconds {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    .digit {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    @keyframes animate {
+        100% {
+            color: #0e3742;
+
+            text-shadow: none;
+        }
+
+        /* 0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%{
+        color: #0e3742;
+        text-shadow: none;
+    } */
+        18.1%,
+        20.1%,
+        30%,
+        50%,
+        60.1%,
+        65%,
+        80.1%,
+        90%,
+        92.1%,
+        100% {
+            color: #fff;
+            text-shadow: 0 0 10px #03bcf4,
+                0 0 20px #03bcf4,
+                0 0 40px #03bcf4,
+                0 0 80px #03bcf4,
+                0 0 160px #03bcf4;
+
+        }
+
+    }
+</style>
+</head>
+
+<body>
+    <H1>ANALOG CLOCK</H1>
+    <div class="set">
+
+        <div id="date"> </div>
+        <div id="day"> </div>
+    </div>
+    <div class="clock">
+        <div id="hour"></div>
+        <div class="dot">:</div>
+        <div id="minuts"></div>
+        <div class="dot">:</div>
+        <div id="seconds"></div>
+    </div>
+    <script>
+        const dates = new Date();
+        const dates1 = dates.getDate();
+        const dates2 = dates.getMonth();
+        const dates3 = dates.getFullYear();
+
+        console.log(dates1 + "-" + dates2 + "-" + dates3);
+        // console.log(dates2);
+        // console.log(dates3);
+        const a = dates1 + "-" + dates2 + "-" + dates3;
+        document.getElementById("date").innerHTML = a;
+        const weekday = ["SUN", "MON", "TUES", "WED", "THURS", "FRI", "SAT"];
+        const ds = new Date();
+        let day = weekday[ds.getDay()];
+        document.getElementById("day").innerHTML = day;
+        // document.getElementById("date").innerHTML = dates2;
+        // document.getElementById("date").innerHTML = dates3;
+        setInterval(() => {
+            const date = new Date();
+
+            const hour = date.getHours();
+            document.getElementById("hour").innerHTML = hour;
+            const min = date.getMinutes();
+            document.getElementById("minuts").innerHTML = min;
+
+            const sec = date.getSeconds();
+            document.getElementById("seconds").innerHTML = sec;
+
+
+        }, 1);
+    </script>
+</body>
+
+</html>
